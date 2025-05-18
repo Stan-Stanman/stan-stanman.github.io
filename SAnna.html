@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.Anna Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* Light gray background */
+            margin: 0;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: flex-start; /* Align items to the start (left) */
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px; /* Optional: Limit content width */
+            margin: 0 auto; /* Center the container */
+            padding: 1rem;
+        }
+        .project-title {
+            text-align: left; /* Align title to the top left */
+            width: 100%; /* Ensure title takes full width */
+            margin-bottom: 1rem; /* Add space below title */
+        }
+        .video-container {
+            margin-top: 2rem; /* Add space above the video section */
+            width: 100%; /* Ensure video container takes full width */
+            /* Add styling here for your video player */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="project-title">
+            <h1 class="text-5xl font-bold text-gray-900">S.Anna</h1>
+        </div>
+
+        <p class="text-gray-700 mb-4">
+            S.Anna is a textual adventure game programmed in C that I developed from scratch with three peers as part of our 'Elements of Computer Science' exam, during the first year of our Bachelor's (04/2022 - 06/2022) at Napoli.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+            We, and especially me, are huge fans of point-and-click adventures, like the classic LucasArts games. Of course, since this was our first experience coding something from scratch, we decided to create an adventure game, but a purely textual one. The choice of C as the programming language was a requirement for the exam.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+            Personally, I contributed to the project by designing the exploration system. This system allows the player to move around a map, which is displayed as ASCII art, and to observe and pick up objects. The goal of the game was to solve a word enigma to open the door that leads to victory.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+            This experience was incredibly educational. It was my first real project developped with an engineering approach, and it was the moment I realized that a career in the engineering world was definitely the right path for me.
+        </p>
+
+        <div class="video-container">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/S3E5762Tpmw?si=zCsdbecyUAyAJ7CE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+</body>
+</html>

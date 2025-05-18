@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salvatore Palumbo's Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Inter font to the body */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* Light gray background */
+        }
+        /* Additional styling for centering and max-width */
+        .content-container {
+            max-width: 800px; /* Max width for the main content */
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2rem; /* Padding around the content */
+            text-align: center; /* Center align text and image */
+        }
+        .portfolio-image {
+            width: 250px; /* Fixed width for the image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 0.5rem; /* Rounded corners for the image */
+            margin-top: 1.5rem; /* Space above the image */
+            margin-bottom: 1.5rem; /* Space below the image */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Subtle shadow */
+        }
+        /* Styling for both bullet point lists */
+        .list-container { /* Added a container for centering the ul */
+            text-align: center; /* Ensures the inline-block ul is centered */
+            margin-bottom: 2.5rem; /* Corresponds to mb-10 */
+        }
+        .list-container.projects { /* Specific class for projects list if different spacing is needed later */
+             margin-bottom: 0; /* Reset bottom margin if it's the last element */
+        }
+
+        .info-list {
+            list-style-position: inside; /* Bullets inside the text block */
+            text-align: left; /* Align text to the left for list items */
+            display: inline-block; /* Allows centering of the list block */
+            padding-left: 1rem; /* Add some padding for the bullets */
+        }
+        .info-list li a, .info-list li span { /* Apply link styles to spans if not a link */
+            color: #2563eb; /* Tailwind's blue-600 for links */
+            text-decoration: none;
+        }
+        .info-list li a:hover {
+            text-decoration: underline;
+            color: #1d4ed8; /* Tailwind's blue-700 for hover */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="content-container">
+        <h1 class="text-4xl font-bold text-gray-900 mt-8 mb-4">Salvatore Palumbo's Portfolio</h1>
+
+        <p class="text-lg text-gray-700 mb-8">
+            I am Salvatore Palumbo and this is my portfolio. Thank you for stopping here!
+        </p>
+
+        <div>
+            <img src="foto_linkedin.jpg"
+                 alt="Salvatore Palumbo"
+                 class="portfolio-image inline-block"
+                 onerror="this.onerror=null;this.src='https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found';">
+        </div>
+
+        <h2 class="text-2xl font-semibold text-gray-900 mt-10 mb-3">
+            My experiences:
+        </h2>
+        <div class="list-container">
+            <ul class="info-list list-disc space-y-2">
+                <li><a href="Unina_corse.html">UniNa Corse - Squadra Corse Federico II</a></li>
+                <li><a href="Assistenza_tecnica.html">Assistenza Tecnica Industriale</a></li>
+            </ul>
+        </div>
+
+        <h2 class="text-2xl font-semibold text-gray-900 mt-10 mb-3">
+            My projects:
+        </h2>
+        <div class="list-container projects">
+            <ul class="info-list list-disc space-y-2">
+                <li><a href="Fuselage_impact.html">Fuselage Impact</a></li>
+                <li><a href="Outdoor_grill.html">Outdoor Grill</a></li>
+                <li><a href="SAnna.html">S.Anna</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
