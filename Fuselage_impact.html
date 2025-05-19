@@ -3,28 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fuselage Impact Project</title>
+    <title>Dynamic Behaviour of Materials Project</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f9fafb; /* Light gray background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             margin: 0;
             padding: 1rem;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: flex-start; /* Align items to the start (left) */
+            min-height: 100vh;
         }
-        .project-title-container {
-            text-align: center;
+        .container {
+            max-width: 800px; /* Optional: Limit content width */
+            margin: 0 auto; /* Center the container */
+            padding: 1rem;
+            width: 100%; /* Ensure container takes full width up to max-width */
+        }
+        .project-title {
+            text-align: left; /* Align title to the top left */
+            width: 100%; /* Ensure title takes full width */
+            margin-bottom: 1rem; /* Add space below title */
+        }
+        .section-title {
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        /* Style for images to make them responsive, center, and add some spacing */
+        .project-image {
+            max-width: 100%; /* Ensure image doesn't overflow its container */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 1rem; /* Add space below images */
+            display: block; /* Prevent extra space below image */
+            margin-left: auto; /* Center image */
+            margin-right: auto; /* Center image */
+        }
+        .video-container {
+            margin-top: 2rem; /* Add space above the video section */
+            width: 100%; /* Ensure video container takes full width */
+            /* Add styling here for your video player */
         }
     </style>
 </head>
 <body>
-    <div class="project-title-container">
-        <h1 class="text-5xl font-bold text-gray-900">Fuselage Impact</h1>
+    <div class="container">
+        <div class="project-title">
+            <h1 class="text-5xl font-bold text-gray-900">Dynamic Behaviour of Materials Project</h1>
         </div>
+
+        <p class="text-gray-700 mb-4">
+            As part of my exam Dynamic Behaviour of Materials, during my first semester at ETH (11/2024 -01/2025), I worked on this project with 4 other students involving FE analysis in Abaqus. Specifically, we analysed the cover of an aircraft component (e.g., a FLAP) which is considered critical for flight control and for this reason its integrity must be protected. Two types of materials are under analysis, and the flap is subjected to impact with a heavy projectile.
+        </p>
+		
+		<img src="task.png"
+             alt="Finite Element analysis task setup"
+             class="project-image w-full md:w-1/2"
+             onerror="this.onerror=null;this.src='[https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found](https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found)';">
+
+        <p class="text-gray-700 mb-4">
+            The goals of the projects are:
+        </p>
+        <ul class="list-disc list-inside text-gray-700 mb-4">
+            <li>Analyzing trends in plastic deformation and fracture behavior</li>
+            <li>Conducting a parametric study on several geometrical parameters and conditions:</li>
+        </ul>
+        <ul class="list-circle list-inside ml-4 text-gray-700 mb-4">
+             <li>Impact velocity</li>
+             <li>Cap Radius</li>
+             <li>Bend Angle</li>
+             <li>Central section width</li>
+             <li>Thickness</li>
+             <li>Material</li>
+             <li>Clamping or not Clamping</li>
+        </ul>
+		
+		<img src="geo_par.png"
+             alt="Geometrical parameters illustrated on a mesh"
+             class="project-image w-full md:w-1/2"
+             onerror="this.onerror=null;this.src='[https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found](https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found)';">
+
+        <p class="text-gray-700 mb-4">
+            The material of the impactor is Mars300, a very high strength steel. While the fuselage can be made of AA7020-T60, an aluminium alloy or TRIP780, a steel.
+        </p>
+		
+		<p class="text-gray-700 mb-4">
+            The plasticity of the three materials has been characterized using the Mixed Swift-Voce model, using available literature to find the parameters which fit the curves for the corresponding materials. For all three materials, a softening behaviour occurs with the increase of temperature, characterized by the Johnson-Cook model. Strain rate dependency occurs only in the two steels.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+            In all three materials, fracture has been described according to the Hosford-Coulomb fracture model, under the assumption of plane stress state.
+        </p>
+
+         <h2 class="text-3xl font-bold text-gray-900 section-title">Numerical Setup</h2>
+
+        <p class="text-gray-700 mb-4">
+            I personally contributed to the coding of the main Matlab script which executes the entire system described in the picture.
+        </p>
+		
+		<img src="simulation_system.png"
+             alt="Flowchart of the simulation system"
+             class="project-image w-full md:w-3/4"
+             onerror="this.onerror=null;this.src='[https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found](https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found)';">
+
+        <p class="text-gray-700 mb-4">
+            The simulations were solved using the Abaqus dynamic explicit solver, the most suitable approach for high rate simulation like these. These simulations are quite computationally intensive. For this reason, they were run on the CPUs of the ETH cluster EULER.
+        </p>
+
+        <h2 class="text-3xl font-bold text-gray-900 section-title">Geometrical setup</h2>
+
+        <p class="text-gray-700 mb-4">
+            Then I contributed also to some areas of the main python script, which can be executed by Abaqus to set up the simulation. We decided to use a fully parametric approach, which was a heavy time investment but resulted in a strong gain during the phase of the automatic parametric study. And we decided to design only 1½ of the geometry to save some computational time.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+            I designed the geometry of the impactor. Even if it looks a very simple geometry, I noticed that by using the task parameters, it resulted in a very long cylinder impacting radially on the fuselage. This setup created some artifacts in the extracted data due to the vibrations caused by the oscillation of the cylinder. My solution to maintain the same mass, without changing the incident radius was to put the mass above the cylinder instead of distributing it along the cylinder axis. Resulting in a more compact geometry and more stable results.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+            In terms of mesh size, we decided (by analysing a few of manual simulations) to refine some specific area and conduct a convergence study on those areas.
+        </p>
+		
+		<img src="impactor.png"
+             alt="Impactor geometry and setup"
+             class="project-image w-full md:w-3/4"
+             onerror="this.onerror=null;this.src='[https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found](https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found)';">
+
+        <h2 class="text-3xl font-bold text-gray-900 section-title">Boundary conditions setup</h2>
+
+        <p class="text-gray-700 mb-4">
+            We decided to set the following constraints:
+        </p>
+		
+		<img src="boundary.png"
+             alt="Boundary conditions visualization"
+             class="project-image w-full md:w-1/2"
+             onerror="this.onerror=null;this.src='[https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found](https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found)';">
+
+        <p class="text-gray-700 mb-4">
+            I personally contributed to the coding of the boundary conditions area (also using Abaqus macros). However, during the first executions of the matalb script for the parametric studies, we noticed that the selected area for the clamping constraint changed within the parametric study. I found that it was related to the presence of fixed and moving "datum planes".
+        </p>
+		
+		<img src="clamping.png"
+             alt="Moving datum plane illustration"
+             class="project-image w-full md:w-1/2"
+             onerror="this.onerror=null;this.src='[https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found](https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found)';">
+
+        <p class="text-gray-700 mb-4">
+            Due to the presence of the FIXED DATUM PLANE, new edges and faces are created when the datum plane moves (due to the changing of the CENTRAL SECTION WIDTH). So the faces PICKED for the creation of the CLAMP constraint change according to the value of the CENTRAL SECTION WIDTH. I solved this issue by inserting an if statement like this in the code which describes the simulation setup before and after the value of the central section width.
+        </p>
+		
+		<img src="if.png"
+             alt="Code snippet showing 'if' statement"
+             class="project-image w-full md:w-3/4"
+             onerror="this.onerror=null;this.src='[https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found](https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found)';">
+
+        <h2 class="text-3xl font-bold text-gray-900 section-title">Results and Conclusions</h2>
+
+        <p class="text-gray-700 mb-4">
+            To conduct the parametric study, we evaluated the absorbed plastic energy for the different geometical settings. What we noticed is that the effect of the bend angle is quite nelgligeble, while the most important parameters are the radius and the central section width. In any setting, wehen the radius and the central section width increase, the energy absorbed reduces, suggesting less plastification of the fuselage.
+        </p>
+		
+		<img src="results.png"
+             alt="Graphs showing simulation results for different parameters"
+             class="project-image w-full md:w-3/4"
+             onerror="this.onerror=null;this.src='[https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found](https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found)';">
+
+        <p class="text-gray-700 mb-4">
+            Min and Max refer to cases where, for a given material and parametric variable, the other two variables are at their minimum and maximum values respectively.
+        </p>
+		
+		<p class="text-gray-700 mb-4">
+            The results were confirmed also by the analysis of the fracture, which happens only in a few setups, all with the minimum central section width and clamped. In fact, only in very short and clamped cases, the stress state in the critical elements tends to be biaxial, leading to a significant damage.
+        </p>
+		
+		<img src="fracture.png"
+             alt="Graph showing fracture analysis results"
+             class="project-image w-full md:w-1/2"
+             onerror="this.onerror=null;this.src='[https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found](https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found)';">
+		
+		<div class="video-container">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/mrXdLN0i5DM?si=REf2DlPAh_AUgMXE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+    </div>
 </body>
 </html>

@@ -10,21 +10,133 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f9fafb; /* Light gray background */
+            margin: 0;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: flex-start; /* Align items to the start (left) */
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px; /* Optional: Limit content width */
+            margin: 0 auto; /* Center the container */
+            padding: 1rem;
+            width: 100%; /* Ensure container takes full width up to max-width */
+        }
+        .project-title {
+            text-align: left; /* Align title to the top left */
+            width: 100%; /* Ensure title takes full width */
+            margin-bottom: 1rem; /* Add space below title */
+        }
+        .section-title {
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .image-placeholder {
+            width: 100%;
+            height: 300px; /* Or adjust as needed */
+            background-color: #e5e7eb; /* Light gray placeholder color */
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 1rem;
+            margin-bottom: 1rem;
+            color: #6b7280; /* Text color for placeholder */
+            font-style: italic;
         }
-        .project-title-container {
-            text-align: center;
+        .video-container {
+            margin-top: 2rem; /* Add space above the video section */
+            width: 100%; /* Ensure video container takes full width */
+            /* Add styling here for your video player */
         }
     </style>
 </head>
 <body>
-    <div class="project-title-container">
-        <h1 class="text-5xl font-bold text-gray-900">Outdoor Grill</h1>
+    <div class="container">
+        <div class="project-title">
+            <h1 class="text-5xl font-bold text-gray-900">Outdoor Grill Project</h1>
         </div>
+
+        <p class="text-gray-700 mb-4">
+            Outdoor Grill is a product development project, developed with 2 peers from scratch as part of our Computer-Aided Design (CAD) exam in the last semster of our Bachelor's degree in Napoli (05/2024 - 06/2024). According to the exam requirements, the project was designed and validated using CATIA V5.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+            The inspiration for this project came from a simple personal need: a barbecue grill with an adjustable distance between the grill surface and the heat source (fire/charcoal).
+        </p>
+
+        <h2 class="text-3xl font-bold text-gray-900 section-title">Project Structure</h2>
+
+        <p class="text-gray-700 mb-4">
+            The project's design is organized into three main assemblies: 
+        </p>
+        <ul class="list-disc list-inside text-gray-700 mb-4">
+            <li>The roller chain assembly</li>
+            <li>The scissor lift assembly</li>
+            <li>The supporting frame assembly</li>
+        </ul>
+
+        <p class="text-gray-700 mb-4">
+            We adopted a Top-Down design approach for the 3D model. This involved creating a skeleton for each assembly containing all the necessary geometrical references, controlled by a set of parameters. This method provided significant control over the project, allowing for a high degree of flexibility when changing parameters without requiring extensive manual adjustments.
+        </p>
+
+        <h2 class="text-3xl font-bold text-gray-900 section-title">The Scissor Lift Mechanism</h2>
+
+        <p class="text-gray-700 mb-4">
+            My primary contribution to the project was the design of the scissor lift assembly.
+        </p>
+
+         <div>
+            <img src="disegno_tecnico.jpg"
+                 alt="Disegno Tecnico"
+                 class="portfolio-image w-full md:w-3/4"
+                 onerror="this.onerror=null;this.src='https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found';">
+        </div>
+         <div>
+            <img src="assieme.png"
+                 alt="Assieme"
+                 class="portfolio-image w-full md:w-1/2"
+                 onerror="this.onerror=null;this.src='https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found';">
+        </div>
+
+        <p class="text-gray-700 mb-4">
+            Unlike standard scissor lifts, where one side remains fixed while the other moves due to lead screw rotations, as demonstrated in an initial handmade prototype (crafted with the help of my father), our design required the centre of gravity of the charcoal basket to remain in the middle of the basket due to safety reason.
+        </p>
+
+        <div class="video-container">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/7Jtw7jiA_5U?si=hDIsO9l6VDUYfpp7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>        
+		</div>
+
+        <p class="text-gray-700 mb-4">
+            To achieve this, I implemented a double trapezoidal lead screw system. This system uses one right-hand screw and one left-hand screw of the same pitch, connected by a mechanical sleeve. The 3D models of the standard parts were downloaded from TRACEPARTS.
+        </p>
+		
+		<div>
+            <img src="screw_lead.png"
+                 alt="Screw Lead"
+                 class="portfolio-image w-full md:w-1/2"
+                 onerror="this.onerror=null;this.src='https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found';">
+        </div>
+
+        <p class="text-gray-700 mb-4">
+            Each lead screw is paired with a corresponding lead screw nut (one right-hand and one left-hand) attached to the two arms of the scissor mechanism. This system ensures that for every rotation of the lead screws, the two lead screw nuts experience displacements of equal magnitude but in opposite directions. This synchronized movement maintains the central position of the charcoal basket.
+        </p>
+		
+		<div>
+            <img src="ourdoor_grill.png"
+                 alt="Ourdoor Grill"
+                 class="portfolio-image w-full md:w-1/2"
+                 onerror="this.onerror=null;this.src='https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found';">
+        </div>
+		
+        <h2 class="text-3xl font-bold text-gray-900 section-title">Simulations</h2>
+
+        <p class="text-gray-700 mb-4">
+            Kinematic simulations were performed specifically on the roller chain assembly. Structural simulations were conducted on the supporting frame assembly to analyse its integrity under load. Unfortunately, since it was not required and due to time limitations, we have not been able to have a physical prototype of the entire system.
+        </p>
+		
+		<div class="video-container">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/4rlUTjVDEY8?si=jFFOjQO6sb0emE9G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>     
+		</div>
+    </div>
 </body>
 </html>
