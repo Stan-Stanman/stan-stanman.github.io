@@ -3,29 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UniNa Corse - Squadra Corse Federico II</title>
+    <title>UniNa Corse Project</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f9fafb; /* Light gray background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             margin: 0;
             padding: 1rem;
-            text-align: center; /* Center title text */
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: flex-start; /* Align items to the start (left) */
+            min-height: 100vh;
         }
-        .experience-title-container {
-            /* Container for the title if more styling is needed later */
+        .container {
+            max-width: 800px; /* Limit content width */
+            margin: 0 auto; /* Center the container */
+            padding: 1rem; /* Add padding inside the container */
+            width: 100%; /* Ensure container takes full width up to max-width */
+        }
+        .project-title {
+            text-align: left; /* Align title to the top left */
+            width: 100%; /* Ensure title takes full width */
+            margin-bottom: 1rem; /* Add space below title */
+        }
+        .section-title {
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        /* Style for images to make them responsive, center, and add some spacing */
+        .project-image {
+            max-width: 100%; /* Ensure image doesn't overflow its container */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 1rem; /* Add space below images */
+            display: block; /* Prevent extra space below image */
+            margin-left: auto; /* Center image */
+            margin-right: auto; /* Center image */
+        }
+        .video-container {
+            margin-top: 2rem; /* Add space above the video section */
+            width: 100%; /* Ensure video container takes full width */
+            /* Add styling here for your video player */
         }
     </style>
 </head>
 <body>
-    <div class="experience-title-container">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900">UniNa Corse - Squadra Corse Federico II</h1>
+    <div class="container">
+        <div class="project-title">
+            <h1 class="text-5xl font-bold text-gray-900">UniNa Corse Project</h1>
         </div>
+
+        <p class="text-gray-700 mb-4">
+            UniNa Corse is the University of Naples racing team, competing in Formula Student. I joined the team during my first semester of my Bachelor's (11/2021 - 09/2022) as a member of the Vehicle Dynamics Division.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+            In this team, I gained experience in different fields of mechanics. The team focused on both the dynamic performance of the car (telemetry analysis, dynamic modeling) and the structural integrity of the components that are part of the wheel assembly.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+            Initially, I primarily focused on the telemetry analysis of the data we collected during tests. I wrote several Matlab functions to extract dynamic functions from the raw data.
+        </p>
+		
+		<div class="video-container">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/9nDjUVI6DY8?si=sy_2yveyXQFggTY0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <p class="text-gray-700 mb-4">
+            I also dedicated time to managing the 3D model of the wheel assembly, resolving issues and updating older parts of the model.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+            A portion of the team was dedicated to the design of the new hub and hub carrier. My specific contribution involved creating 2D drawings for manufacturing. This task was particularly time-consuming due to the precise definition of tolerances between the hub/bearing and bearing/hub carrier. Given that bearings are not rigid and possess inherent backlash, we relied on producer guidelines, which relate to the maximum torque for specific applications. After reviewing relevant literature and comparing it with available online resources, my colleague and I successfully determined the appropriate tolerances.
+        </p>
+		
+        <p class="text-gray-700 mb-4">
+            I also contributed to the assembly of the car by working weekly in our box to mount the main components and prepare the car for the competitions in Italy (Varano de' Melegari) and Germany (Hockenheimring).
+        </p>
+		
+		<img src="assembly.png"
+             alt="Code snippet showing 'if' statement"
+             class="project-image w-full md:w-1/2"
+             onerror="this.onerror=null;this.src='[https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found](https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found)';">
+    </div>
 </body>
 </html>
