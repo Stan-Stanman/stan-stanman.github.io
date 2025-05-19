@@ -10,22 +10,76 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f9fafb; /* Light gray background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             margin: 0;
             padding: 1rem;
-            text-align: center; /* Center title text */
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: flex-start; /* Align items to the start (left) */
+            min-height: 100vh;
         }
-        .experience-title-container {
-             /* Container for the title if more styling is needed later */
+        .container {
+            max-width: 800px; /* Limit content width */
+            margin: 0 auto; /* Center the container */
+            padding: 1rem; /* Add padding inside the container */
+            width: 100%; /* Ensure container takes full width up to max-width */
+        }
+        .project-title {
+            text-align: left; /* Align title to the top left */
+            width: 100%; /* Ensure title takes full width */
+            margin-bottom: 1rem; /* Add space below title */
+        }
+        .section-title {
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        /* Style for images to make them responsive, center, and add some spacing */
+        .project-image {
+            max-width: 100%; /* Ensure image doesn't overflow its container */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 1rem; /* Add space below images */
+            display: block; /* Prevent extra space below image */
+            margin-left: auto; /* Center image */
+            margin-right: auto; /* Center image */
+        }
+        .video-container {
+            margin-top: 2rem; /* Add space above the video section */
+            width: 100%; /* Ensure video container takes full width */
+            /* Add styling here for your video player */
         }
     </style>
 </head>
 <body>
-    <div class="experience-title-container">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Assistenza Tecnica Industriale</h1>
+    <div class="container">
+        <div class="project-title">
+            <h1 class="text-5xl font-bold text-gray-900">Assistenza Tecnica</h1>
         </div>
+
+        <p class="text-gray-700 mb-4">
+            In the summers before starting university, I worked as an assistant for my father, an industrial machinery technician. My father has always imparted his passion for his job to me since I was a child, and I really love his work. This experience was my first real contact with engineering and I was probably too young to have a rational understanding of it.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+            His field primarily involves woodworking machines and air compressors, both rotary-screw and piston types. During my time with him, I had the opportunity to participate in solving very tricky repairs. These were often extreme cases where even the technicians and engineers of the machine manufacturers couldn't find a solution.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+            This repair work really improved my problem-solving skills. It also made me better at communicating, as I learned to gather as many hints as possible from the workers who encountered the failure. Of course, I also developed a strong practical sense and manual skills.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+            I'm very proud of this experience because, in a way, it confirmed my choice to go into engineering, especially mechanical engineering.
+        </p>
+		
+		<div class="video-container">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/jCo_otBEr-o?si=913Sy_U36qYnNa9N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+		
+		<div class="video-container">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/hk4xb9rJwS0?si=A_sXl-g0gDnvApRn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+		<div class="video-container">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/hgS0ftlOegs?si=Wcxmz66vNUfQz94k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
 </body>
 </html>
