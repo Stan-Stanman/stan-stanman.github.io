@@ -87,6 +87,98 @@
             margin-bottom: 1.5rem;
             border-radius: 0.5rem;
         }
+		.image-container {
+			display: flex; /* Enables flexbox layout */
+			justify-content: center; /* Centers the images horizontally */
+			align-items: flex-start; /* Aligns items to the start of the cross axis (top) */
+			flex-wrap: wrap; /* Allows images to wrap to the next line on smaller screens */
+			gap: 20px; /* Adds space between images */
+		  }
+		  .image-container figure {
+			margin: 0; /* Remove default figure margin */
+			padding: 0; /* Remove default figure padding */
+			text-align: center; /* Center the caption if present */
+		  }
+		  .image-container img {
+			max-width: 100%; /* Ensures images are responsive and don't overflow */
+			height: auto; /* Maintains aspect ratio */
+			border: 1px solid #ddd; /* Optional: adds a light border around images */
+			box-shadow: 2px 2px 5px rgba(0,0,0,0.2); /* Optional: adds a subtle shadow */
+		  }
+		  figcaption {
+			margin-top: 5px;
+			font-style: italic;
+			color: #555;
+		  }
+		.video-container {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			max-width: 90%; /* Ensure responsiveness */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		  }
+		  /* Responsive iframe for YouTube video */
+		  .video-responsive {
+			overflow: hidden;
+			padding-bottom: 56.25%; /* 16:9 aspect ratio (height / width) */
+			position: relative;
+			height: 0;
+			width: 100%;
+		  }
+		  .video-responsive iframe {
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			border-radius: 8px; /* Rounded corners for the video */
+		  }
+		  .image-row {
+			display: flex;
+			flex-wrap: wrap; /* Allows images to wrap to the next line on smaller screens */
+			justify-content: center; /* Center images horizontally */
+			gap: 20px; /* Space between images */
+		  }
+		  .image-row figure {
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			flex: 1 1 auto; /* Allow items to grow and shrink, but maintain their size initially */
+			min-width: 280px; /* Minimum width for each image before wrapping */
+			max-width: 48%; /* Adjust based on desired number of images per row */
+			box-sizing: border-box;
+		  }
+		  .image-row img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 8px;
+			border: 1px solid #ddd;
+			box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+		  }
+		  .image-row figcaption {
+			margin-top: 10px;
+			font-size: 0.95em;
+			color: #555;
+		  }
+
+		  /* Specific adjustments for Figure 10's layout if needed */
+		  .figure-10 .image-row figure {
+			max-width: 48%; /* Two images per row */
+		  }
+
+		  /* Specific adjustments for Figure 11's layout if needed */
+		  .figure-11 .image-row figure {
+			max-width: 30%; /* Three images per row */
+		  }
+
+		  @media (max-width: 768px) {
+			.image-row figure {
+			  max-width: 100%; /* Stack images vertically on small screens */
+			}
+		  }
     </style>
 </head>
 <body class="p-4">
@@ -98,7 +190,7 @@
             <h2 class="text-2xl font-bold text-teal-600">1 Introduction</h2>
             <h3 class="text-xl font-semibold text-gray-800">1.1 Description of the problem</h3>
             <p>
-                This report details a project inspired by Leon Robers' work at Tribecraft AG, focusing on the strength assessment of a plastic blood pump casing. The Hemovent blood pump, integral to an extracorporeal membrane oxygenation (ECMO) system, operates without motors or electronics, relying on gas pressure to circulate blood. The challenge arose from increasing the pump's flow rate, which necessitated higher internal pressures and led to component failures before reaching the target of 3 million cycles. This highlighted a critical need for structural re-evaluation.
+                This report details a project inspired by <a style="color:blue;" href="https://www.linkedin.com/in/leon-robers/">Leon Robers'</a> work at <a style="color:blue;" href="https://tribecraft.ch/tribe">Tribecraft AG</a>, focusing on the strength assessment of a plastic blood pump casing. The <a style="color:blue;" href="https://www.hemovent.com/eu/">Hemovent</a> blood pump, integral to an extracorporeal membrane oxygenation (ECMO) system, operates without motors or electronics, relying on gas pressure to circulate blood. The challenge arose from increasing the pump's flow rate, which necessitated higher internal pressures and led to component failures before reaching the target of 3 million cycles. This highlighted a critical need for structural re-evaluation.
             </p>
 
             <h3 class="text-xl font-semibold text-gray-800">1.2 Tasks</h3>
@@ -121,9 +213,37 @@
             <p>
                 The chosen material for the blood pump is Terlux 2802, a Methyl Methacrylate Acrylonitrile Butadiene Styrene (MABS) polymer. Its quasi-static properties were sourced from Campusplastics. An intermediate working temperature of $30^{\circ}C$ was assumed. The elastic properties used are summarized in Table 1 (refer to original report). The plastic behavior was not investigated as stresses remained below the yield stress, except for stress singularities.
             </p>
-            <p class="note">
-                <em>Table 1: MABS Terlux 2802 mechanical properties (refer to original report for details).</em>
-            </p>
+            <table border="1">
+			  <caption>Table 1: MABS Terlux 2802 mechanical properties</caption>
+			  <thead>
+				<tr>
+				  <th>Property</th>
+				  <th>Value</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <td>Density (kg/m$^3$)</td>
+				  <td>1080</td>
+				</tr>
+				<tr>
+				  <td>Young's Modulus (MPa)</td>
+				  <td>2064</td>
+				</tr>
+				<tr>
+				  <td>Poisson's Ratio (-)</td>
+				  <td>0.4</td>
+				</tr>
+				<tr>
+				  <td>Tensile Yield Strength (MPa)</td>
+				  <td>38.9</td>
+				</tr>
+				<tr>
+				  <td>Tensile Ultimate Strength (MPa)</td>
+				  <td>46</td>
+				</tr>
+			  </tbody>
+			</table>
 
             <h4 class="text-lg font-medium text-gray-700">2.1.2 S-N Curve</h4>
             <p>
@@ -136,16 +256,9 @@
             <p>
                 The first approach was selected due to its chemical similarity to MABS and its more conservative nature in the High Cycle Fatigue (HCF) range.
             </p>
-            <p class="note">
-                <em>Figure 1: Comparison of S-N curves for the two approaches (refer to original report).</em>
-            </p>
-
             <h3 class="text-xl font-semibold text-gray-800">2.2 Contacts definition</h3>
             <p>
                 All contacts investigated were primarily between components that are bonded together (e.g., upper tube to lower tube, upper tube to upper case, glue to middle plate). These were modeled as linear bonded contacts to simplify the model and save computational time, as the reliability or deformation of these interfaces was not the primary focus.
-            </p>
-            <p class="note">
-                <em>Figure 2: Bonded contacts definition (refer to original report).</em>
             </p>
 
             <h3 class="text-xl font-semibold text-gray-800">2.3 Boundary conditions and loading</h3>
@@ -153,18 +266,30 @@
             <p>
                 Loads within the blood pump are typically non-linear and impulsive. However, for this quasi-static analysis, a constant pressure of 0.8 bar on the blood side and 1.0 bar on the gas side was assumed. The pumping action involves alternating states: one cycle where the upper case membrane expands to pump blood (Figure 3 in report), and a subsequent cycle where it acts as the sucking chamber (Figure 4 in report).
             </p>
-            <p class="note">
-                <em>Figure 3: Pumping cycle loads (refer to original report).</em><br>
-                <em>Figure 4: Suction cycle loads (refer to original report).</em>
-            </p>
+			<div class="figure-section figure-10">
+				<div class="figure-title">Loads definition.</div>
+				<div class="image-row">
+				  <figure>
+					<img src="pumping_cycle.png" alt="pumping_cycle">
+					<figcaption>(a) Pumping cycle</figcaption>
+				  </figure>
+				  <figure>
+					<img src="suction_cycle.png" alt="suction_cycle">
+					<figcaption>(b) Suction cycle</figcaption>
+				  </figure>
+				</div>
+			  </div>
 
             <h4 class="text-lg font-medium text-gray-700">2.3.2 Boundary conditions</h4>
             <p>
                 The pump's inherent symmetry allowed modeling only one half, saving computational time. A frictionless support was applied on the cut surfaces to prevent out-of-plane displacements and rotations. Additionally, the displacement in the y-direction of the middle plate's outer ring surface was constrained (Figure 5 in report) to prevent vertical movement while allowing radial expansion, accurately reflecting real-world support conditions.
             </p>
-            <p class="note">
-                <em>Figure 5: Support boundary conditions (refer to original report).</em>
-            </p>
+            <div class="image-wrapper">
+			  <figure>
+				<img src="support.png" alt="support">
+				<figcaption>Boundary conditions</figcaption>
+			  </figure>
+			</div>
 
             <h3 class="text-xl font-semibold text-gray-800">2.4 Linear simulation</h3>
             <p>
@@ -178,10 +303,6 @@
             <h4 class="text-lg font-medium text-gray-700">3.1.1 First mesh model</h4>
             <p>
                 A coarse, uniform mesh with quadratic elements was initially used to identify critical areas, as refinement would only be applied to limited regions. This approach balanced accuracy and computational time.
-            </p>
-            <p class="note">
-                <em>Table 3: Mesh statistics (refer to original report).</em><br>
-                <em>Figure 6: First mesh model (refer to original report).</em>
             </p>
 
             <h4 class="text-lg font-medium text-gray-700">3.1.2 Critical areas and first design improvement</h4>
