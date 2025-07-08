@@ -3,14 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design of a plastic blood pump housing under cyclic load</title>
+    <title>Blood Pump Housing - Case Study</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        h1, h2, h3, h4 {
+            color: #1e293b;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2.25rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        h2 {
+            font-size: 1.75rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        h4 {
+            font-size: 1.25rem;
+            margin-top: 1rem;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+        }
+        .figure-caption {
+            font-size: 0.875rem;
+            color: #64748b;
+            text-align: center;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .note {
+            background-color: #e0f2fe;
+            border-left: 4px solid #38b2ac;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
+        }
+    </style>
 </head>
-<body>
-    <h1>Design of a plastic blood pump housing under cyclic load</h1>
-    <p>As part of my exam “Case studies - Applied FEM”, I have planned to work on the case study of a blood pump housing. I will work on a simplified version of a real 3D model by TRIBECRAFT. This project will include:</p>
-    <ul>
-        <li>Setting of FE models in Ansys for 1 working cycle with particular concern to material properties and contacts.</li>
-        <li>Identification of the stress amplitude and mean stress to assess fatigue strength.</li>
-    </ul>
+<body class="p-4">
+    <div class="container">
+        <h1 class="text-4xl font-extrabold text-center text-teal-700 mb-6">Case Study: Blood Pump Housing</h1>
+        <p class="text-center text-gray-600 mb-8">Author: Salvatore Palumbo</p>
+
+        <section>
+            <h2 class="text-2xl font-bold text-teal-600">1 Introduction</h2>
+            <h3 class="text-xl font-semibold text-gray-800">1.1 Description of the problem</h3>
+            <p>
+                This report details a project inspired by Leon Robers' work at Tribecraft AG, focusing on the strength assessment of a plastic blood pump casing. The Hemovent blood pump, integral to an extracorporeal membrane oxygenation (ECMO) system, operates without motors or electronics, relying on gas pressure to circulate blood. The challenge arose from increasing the pump's flow rate, which necessitated higher internal pressures and led to component failures before reaching the target of 3 million cycles. This highlighted a critical need for structural re-evaluation.
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800">1.2 Tasks</h3>
+            <p>
+                The project aimed to perform a strength assessment of this plastic casing through:
+            </p>
+            <ul class="list-disc pl-5">
+                <li>Quasi-static assessment</li>
+                <li>Fatigue assessment</li>
+            </ul>
+            <p>
+                This involved utilizing a provided half-geometry of the casing, defining material properties and contacts, setting boundary conditions and loads for a single working cycle, and conducting a mesh convergence analysis on identified critical areas. A key objective was to identify stress cycles (stress amplitude and mean stress) and compare them against material limits using fatigue assessment tools to understand the casing's integrity and durability.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-bold text-teal-600">2 Assumptions and Modeling</h2>
+            <h3 class="text-xl font-semibold text-gray-800">2.1 Material modeling</h3>
+            <h4 class="text-lg font-medium text-gray-700">2.1.1 Elastic behaviour</h4>
+            <p>
+                The chosen material for the blood pump is Terlux 2802, a Methyl Methacrylate Acrylonitrile Butadiene Styrene (MABS) polymer. Its quasi-static properties were sourced from Campusplastics. An intermediate working temperature of $30^{\circ}C$ was assumed. The elastic properties used are summarized in Table 1 (refer to original report). The plastic behavior was not investigated as stresses remained below the yield stress, except for stress singularities.
+            </p>
+            <p class="note">
+                <em>Table 1: MABS Terlux 2802 mechanical properties (refer to original report for details).</em>
+            </p>
+
+            <h4 class="text-lg font-medium text-gray-700">2.1.2 S-N Curve</h4>
+            <p>
+                For fatigue life assessment, the S-N curve linking stress amplitude to cycles to failure is crucial. As experimental data for Terlux 2802 was unavailable, two approaches were considered:
+            </p>
+            <ul class="list-disc pl-5">
+                <li>Using experimental data from a similar ABS-PMMA blend, yielding the equation $S_{a}=302.7(N_{f})^{-0.332}$.</li>
+                <li>Employing a rule of thumb for short fiber reinforced polymer composites, resulting in $S_{a}=1.08*UTS(N_{f})^{-0.085}$.</li>
+            </ul>
+            <p>
+                The first approach was selected due to its chemical similarity to MABS and its more conservative nature in the High Cycle Fatigue (HCF) range.
+            </p>
+            <p class="note">
+                <em>Figure 1: Comparison of S-N curves for the two approaches (refer to original report).</em>
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800">2.2 Contacts definition</h3>
+            <p>
+                All contacts investigated were primarily between components that are bonded together (e.g., upper tube to lower tube, upper tube to upper case, glue to middle plate). These were modeled as linear bonded contacts to simplify the model and save computational time, as the reliability or deformation of these interfaces was not the primary focus.
+            </p>
+            <p class="note">
+                <em>Figure 2: Bonded contacts definition (refer to original report).</em>
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800">2.3 Boundary conditions and loading</h3>
+            <h4 class="text-lg font-medium text-gray-700">2.3.1 Loads</h4>
+            <p>
+                Loads within the blood pump are typically non-linear and impulsive. However, for this quasi-static analysis, a constant pressure of 0.8 bar on the blood side and 1.0 bar on the gas side was assumed. The pumping action involves alternating states: one cycle where the upper case membrane expands to pump blood (Figure 3 in report), and a subsequent cycle where it acts as the sucking chamber (Figure 4 in report).
+            </p>
+            <p class="note">
+                <em>Figure 3: Pumping cycle loads (refer to original report).</em><br>
+                <em>Figure 4: Suction cycle loads (refer to original report).</em>
+            </p>
+
+            <h4 class="text-lg font-medium text-gray-700">2.3.2 Boundary conditions</h4>
+            <p>
+                The pump's inherent symmetry allowed modeling only one half, saving computational time. A frictionless support was applied on the cut surfaces to prevent out-of-plane displacements and rotations. Additionally, the displacement in the y-direction of the middle plate's outer ring surface was constrained (Figure 5 in report) to prevent vertical movement while allowing radial expansion, accurately reflecting real-world support conditions.
+            </p>
+            <p class="note">
+                <em>Figure 5: Support boundary conditions (refer to original report).</em>
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800">2.4 Linear simulation</h3>
+            <p>
+                The simulation setup was entirely linear. Material behavior was assumed linear as loads were below yielding stress. Contacts were also treated as linear since interface behavior was not under investigation, and loads were quasi-static. Initial results indicated small deformations, allowing for a single-step simulation with one stiffness constant, significantly reducing computational time.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-bold text-teal-600">3 Quasi-static Assessment</h2>
+            <h3 class="text-xl font-semibold text-gray-800">3.1 Identification of the critical areas</h3>
+            <h4 class="text-lg font-medium text-gray-700">3.1.1 First mesh model</h4>
+            <p>
+                A coarse, uniform mesh with quadratic elements was initially used to identify critical areas, as refinement would only be applied to limited regions. This approach balanced accuracy and computational time.
+            </p>
+            <p class="note">
+                <em>Table 3: Mesh statistics (refer to original report).</em><br>
+                <em>Figure 6: First mesh model (refer to original report).</em>
+            </p>
+
+            <h4 class="text-lg font-medium text-gray-700">3.1.2 Critical areas and first design improvement</h4>
+            <p>
+                High stresses or stress gradients were observed in several regions, identified using equivalent Mises stress and maximum principal stresses. Critical areas included:
+            </p>
+            <ul class="list-disc pl-5">
+                <li><strong>Upper middle plate around central blends:</strong> Very high stresses were noted, indicating the original blend was too small. A design improvement was suggested to enlarge these blends. (Figure 7a, 7b, 7c, 7d in report).</li>
+                <li><strong>Outer ring of the upper middle plate:</strong> A circular critical area with a particularly critical spot near the fixed boundary condition, making it a realistic location for high stresses. (Figure 8a, 8b in report).</li>
+                <li><strong>Fixed support:</strong> Stress intensification was observed at the joint with the middle plate, also warranting further investigation. (Figure 9 in report).</li>
+            </ul>
+            <p class="note">
+                <em>Figure 7: Blends critical area (refer to original report).</em><br>
+                <em>Figure 8: Outer ring critical area (refer to original report).</em><br>
+                <em>Figure 9: Support critical area (refer to original report).</em>
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800">3.2 Mesh convergence study and assessment</h3>
+            <h4 class="text-lg font-medium text-gray-700">3.2.1 Outer ring mesh refinement</h4>
+            <p>
+                A mesh convergence study was conducted on the outer ring. A mesh size of 0.4 mm was selected, balancing error reduction and computational time. This resulted in a safety factor (SF) of 4.70, indicating a confident distance from plastic failure.
+            </p>
+            <p class="note">
+                <em>Figure 10: Outer ring refinement (refer to original report).</em><br>
+                <em>Table 4: Outer ring mesh convergence (refer to original report).</em>
+            </p>
+
+            <h4 class="text-lg font-medium text-gray-700">3.2.2 Inner blends mesh refinement</h4>
+            <p>
+                Similar refinement was applied to the inner blends, with a chosen mesh size of 0.3 mm. The resulting safety factor (SF = 4.26) was also satisfactory.
+            </p>
+            <p class="note">
+                <em>Figure 11: Inner blends refinement (refer to original report).</em><br>
+                <em>Table 5: Inner blends mesh convergence (refer to original report).</em>
+            </p>
+
+            <h4 class="text-lg font-medium text-gray-700">3.2.3 Support mesh refinement</h4>
+            <p>
+                Refining the mesh near the support joint did not lead to convergence, indicating that stress intensification was due to a sharp edge in the model's geometry. Since these high stresses were localized along a line and other stresses around it were significantly lower, no immediate action was deemed necessary.
+            </p>
+            <p class="note">
+                <em>Figure 12: Support mesh refinement (refer to original report).</em><br>
+                <em>Table 6: Final mesh statistics (refer to original report).</em><br>
+                <em>Figure 13: Smart mesh model (refer to original report).</em>
+            </p>
+
+            <h4 class="text-lg font-medium text-gray-700">3.2.4 Analytical model</h4>
+            <p>
+                A simplified beam model was implemented to verify simulation results. Assuming the circular geometry as a beam, and considering gas and blood pressures, the calculated flexural moment and resulting stress ($\sigma_{fMax} \approx 4.9 MPa$) were comparable to simulation results, increasing confidence in the model.
+            </p>
+            <p class="note">
+                <em>Figure 14: Beam with fixed support and uniformly distributed load (refer to original report).</em>
+            </p>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-bold text-teal-600">4 Fatigue Assessment</h2>
+            <h3 class="text-xl font-semibold text-gray-800">4.1 Identification of the stress cycles</h3>
+            <h4 class="text-lg font-medium text-gray-700">4.1.1 Multiaxiality effect on the critical points</h4>
+            <p>
+                Fatigue assessment considered two quasi-static phases: pumping and suction. The degree of multiaxiality (h) was evaluated, as Mises stress alone is insufficient when $h > 1/3$. An equivalent stress ($\sigma_{eq}$) was calculated using the highest principal component and a control variable (q = 0.26 for the semi-ductile polymer). Results at critical points (inner blends and outer ring) showed that Mises stress did not fully capture the stress state.
+            </p>
+            <p class="note">
+                <em>Table 7: Values for RT Quasi-Static Analysis (refer to original report).</em><br>
+                <em>Table 8: Stress Results - Pumping Cycle (refer to original report).</em><br>
+                <em>Table 9: Stress Results - Suction Cycle (refer to original report).</em><br>
+                <em>Figure 15: Inner bends legenda (refer to original report).</em>
+            </p>
+
+            <h4 class="text-lg font-medium text-gray-700">4.1.2 SN Identification</h4>
+            <p>
+                Stress amplitude ($S_a$) and mean stress ($S_m$) were computed from equivalent stresses. The Soderberg diagram approximation was used to link the ($S_a$, $S_m$) couple to a single stress amplitude in a pure fully reversed cycle ($S_N$). For an expected life of $3 \cdot 10^6$ cycles, the stress amplitude for failure ($S_{Nf}$) was calculated as $2.141 MPa$ using the S-N curve. The utilization ratio (u) indicated how far the stress was from failure stress. Initial utilization ratios were very high, necessitating design changes.
+            </p>
+            <p class="note">
+                <em>Table 10: Fatigue Assessment Parameters (refer to original report).</em>
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800">4.2 Design improvements</h3>
+            <h4 class="text-lg font-medium text-gray-700">4.2.1 Inner bends</h4>
+            <p>
+                Stress intensifications at the inner bends, part of the ribs designed to increase stiffness, indicated insufficient design for the desired fatigue life. Two attempts were made:
+            </p>
+            <ul class="list-disc pl-5">
+                <li>Increasing attachment height to the central cylinder (Figure 16a in report).</li>
+                <li>Increasing rib thickness to 4 mm (Figure 16b in report), which yielded better results.</li>
+            </ul>
+            <p class="note">
+                <em>Figure 16: First and second attempt for the inner bends (refer to original report).</em>
+            </p>
+
+            <h4 class="text-lg font-medium text-gray-700">4.2.2 Outer ring</h4>
+            <p>
+                To reduce stresses in the outer ring, the external diameter of the external support was increased (Figure 17 in report) to enhance overall stiffness in that area.
+            </p>
+            <p class="note">
+                <em>Figure 17: Third design attempt (refer to original report).</em>
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800">4.3 Results</h3>
+            <h4 class="text-lg font-medium text-gray-700">4.3.1 Reduction in the utilization ratio</h4>
+            <p>
+                The design improvements significantly changed the stress state at critical points, particularly in the blends, where the stress state became predominantly uniaxial. Utilization ratios for the blends substantially decreased, and a good reduction was also noted for the outer ring. However, these changes were not sufficient to achieve a utilization ratio smaller than 1, indicating that the primary design objective was not fully met.
+            </p>
+            <p class="note">
+                <em>Figure 18: Mises stress results in suction (refer to original report).</em><br>
+                <em>Table 11: Combined Stress and Fatigue Parameters for Critical Regions (refer to original report).</em>
+            </p>
+
+            <h4 class="text-lg font-medium text-gray-700">4.3.2 Material limits</h4>
+            <p>
+                Further design improvement would involve identifying a more suitable material. A comparison with Leon Robers' work showed similar simulation stresses but considerably lower utilization ratios in his results (less than 1). This suggested that the initial material selection in this project might have been overly conservative, possibly due to more reliable material properties used in Robers' original project.
+            </p>
+        </section>
+
+        <section class="mt-8">
+            <h2 class="text-2xl font-bold text-teal-600">References</h2>
+            <p>
+                For detailed references, please consult the original report, "Salvatore_Palumbo_blood_pump_report.pdf".
+            </p>
+        </section>
+    </div>
 </body>
 </html>
