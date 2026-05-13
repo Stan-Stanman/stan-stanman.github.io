@@ -3,89 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R&amp;D Intern in the Nailing system team</title>
+    <title>J&J Internship - Salvatore Palumbo</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Apply Inter font to the body, matching the main portfolio */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f9fafb; /* Light gray background */
-            margin: 0;
-            padding: 1rem;
-            display: flex;
-            flex-direction: column; /* Stack elements vertically */
-            align-items: flex-start; /* Align items to the start (left) */
-            min-height: 100vh;
         }
-        .container {
-            max-width: 800px; /* Limit content width */
-            margin: 0 auto; /* Center the container */
-            padding: 1rem; /* Add padding inside the container */
-            width: 100%; /* Ensure container takes full width up to max-width */
+        
+        /* Main container styling */
+        .content-container {
+            max-width: 800px; 
+            margin-left: auto;
+            margin-right: auto;
+            padding: 3rem 2rem; 
         }
-        .project-title {
-            text-align: left; /* Align title to the top left */
-            width: 100%; /* Ensure title takes full width */
-            margin-bottom: 1rem; /* Add space below title */
+
+        /* Cleaned up list styling for the bullet points */
+        .info-list {
+            list-style-position: outside; 
+            margin-left: 1.5rem; 
         }
-        .section-title {
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        /* Style for images to make them responsive, center, and add some spacing */
-        .project-image {
-            max-width: 100%; /* Ensure image doesn't overflow its container */
-            height: auto; /* Maintain aspect ratio */
-            margin-bottom: 1rem; /* Add space below images */
-            display: block; /* Prevent extra space below image */
-            margin-left: auto; /* Center image */
-            margin-right: auto; /* Center image */
-        }
-        .video-container {
-            margin-top: 2rem; /* Add space above the video section */
-            width: 100%; /* Ensure video container takes full width */
-            /* Add styling here for your video player */
+        
+        .info-list li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="project-title">
-            <h1 class="text-5xl font-bold text-gray-900">UniNa Corse Project</h1>
-        </div>
+<body class="bg-gray-50 text-gray-800">
 
-        <p class="text-gray-700 mb-4">
-            <a style="color:blue;" href="https://www.linkedin.com/company/unina-corse/">UniNa Corse</a> is the University of Naples racing team, competing in <a style="color:blue;" href="https://www.imeche.org/events/formula-student">Formula Student</a>. I joined the team during my first semester of my Bachelor's (11/2021 - 09/2022) as a member of the Vehicle Dynamics Division.
-        </p>
+    <div class="content-container">
+        
+        <!-- Navigation / Back Button -->
+        <nav class="mb-8">
+            <a href="index.html" class="text-blue-600 hover:text-blue-800 hover:underline flex items-center gap-1 text-sm font-medium transition-colors">
+                &larr; Back to Portfolio
+            </a>
+        </nav>
 
-        <p class="text-gray-700 mb-4">
-            In this team, I gained experience in different fields of mechanics. The team focused on both the dynamic performance of the car (telemetry analysis, dynamic modeling) and the structural integrity of the components that are part of the wheel assembly.
-        </p>
+        <!-- Page Header -->
+        <header class="border-b-2 border-gray-200 pb-6 mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">DePuy Synthes – Johnson &amp; Johnson MedTech</h1>
+            <h2 class="text-xl sm:text-2xl font-medium text-gray-700">R&amp;D Pre-Development Intern | Nailing Systems</h2>
+            <p class="text-gray-500 text-sm mt-2 font-medium tracking-wide uppercase">September 2025 – April 2026</p>
+        </header>
 
-        <p class="text-gray-700 mb-4">
-            Initially, I primarily focused on the telemetry analysis of the data we collected during tests. I wrote several Matlab functions to extract dynamic functions from the raw data.
-        </p>
-		
-		<div class="video-container">
-			<iframe width="560" height="315" src="https://www.youtube.com/embed/9nDjUVI6DY8?si=sy_2yveyXQFggTY0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
+        <main>
+            <!-- Confidentiality Callout -->
+            <div class="bg-gray-100 border-l-4 border-gray-400 p-4 mb-8 text-sm text-gray-700 italic rounded-r-md">
+                <strong>Confidentiality Note:</strong> Due to an active NDA, specific product names, proprietary design details, and CAD imagery are omitted.
+            </div>
 
-        <p class="text-gray-700 mb-4">
-            I also dedicated time to managing the 3D model in PTC Creo of the wheel assembly, resolving issues and updating older parts of the model.
-        </p>
+            <!-- Project Overview -->
+            <section class="mb-10">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-4">Project Overview</h3>
+                <p class="text-lg text-gray-700 leading-relaxed text-balance">
+                    I was tasked with driving the early-stage development of a novel nail/screw system concept designed to address the complex biomechanical challenges of unstable femoral fractures. Taking the project from a foundational concept through to physical fatigue testing, I navigated multiple stages of the R&amp;D lifecycle, bridging the gap between theoretical simulation and practical, tangible prototypes.
+                </p>
+            </section>
 
-        <p class="text-gray-700 mb-4">
-            A portion of the team was dedicated to the design of the new hub and hub carrier. My specific contribution involved creating 2D drawings for manufacturing. This task was particularly time-consuming due to the precise definition of tolerances between the hub/bearing and bearing/hub carrier. Given that bearings are not rigid and possess inherent backlash, we relied on producer guidelines, which relate to the maximum torque for specific applications. After reviewing relevant literature and comparing it with available online resources, my colleague and I successfully determined the appropriate tolerances.
-        </p>
-		
-        <p class="text-gray-700 mb-4">
-            I also contributed to the assembly of the car by working weekly in our box to mount the main components and prepare the car for the competitions in Italy (Varano de' Melegari) and Germany (Hockenheimring).
-        </p>
-		
-		<img src="assembly.png"
-             alt="Code snippet showing 'if' statement"
-             class="project-image w-full md:w-1/2"
-             onerror="this.onerror=null;this.src='[https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found](https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found)';">
+            <!-- Key Phases & Contributions -->
+            <section class="mb-12">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-6">Key Phases &amp; Contributions</h3>
+
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3">Computational Modeling &amp; Iterative Design</h4>
+                    <ul class="info-list list-disc text-gray-700">
+                        <li>Spearheaded the 3D modeling of initial concepts using PTC Creo, focusing on anatomical fit and structural integrity.</li>
+                        <li>Conducted rigorous finite element analysis (FEA) using Ansys to simulate standard fatigue testing setups. By analyzing these computational models, I proactively identified critical stress concentrations and iteratively optimized the implant's geometry to maximize fatigue life before committing to physical prototyping.</li>
+                    </ul>
+                </div>
+
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3">Design for Manufacturing (DFM) &amp; Prototyping</h4>
+                    <ul class="info-list list-disc text-gray-700">
+                        <li>Translated optimized 3D models into comprehensive, GD&amp;T-compliant technical drawings.</li>
+                        <li>Collaborated directly with the internal workshop machinists to ensure the designs were highly precise, manufacturable, and cost-effective, resulting in the successful production of functional prototypes.</li>
+                    </ul>
+                </div>
+
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3">Surgical Instrumentation &amp; Systems Integration</h4>
+                    <ul class="info-list list-disc text-gray-700">
+                        <li>Recognized that a new implant requires novel deployment tools. I collaborated cross-functionally to design and develop custom surgical instruments required for construct testing.</li>
+                        <li>Managed the product data and lifecycle documentation for these instruments utilizing industry-standard PLM software, including Windchill and Agile e6.2.</li>
+                        <li>Helped facilitate WetLab environments to test the ergonomic and practical application of these instruments in simulated surgical scenarios.</li>
+                    </ul>
+                </div>
+
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3">Empirical Validation &amp; Fatigue Testing</h4>
+                    <ul class="info-list list-disc text-gray-700">
+                        <li>Transitioned the project from the digital environment to the physical testing lab.</li>
+                        <li>Currently managing the setup, calibration, and execution of dynamic physical fatigue tests to validate the Ansys simulations against real-world mechanical behavior.</li>
+                        <li>Responsible for ongoing data acquisition, analysis, and compiling performance reports to inform the next phase of the product's development cycle.</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Core Competencies & Tools -->
+            <section class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Core Competencies &amp; Tools</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700 text-sm sm:text-base">
+                    <div>
+                        <span class="block font-semibold text-gray-900 mb-1">CAD &amp; CAE</span>
+                        <p>PTC Creo, Ansys (FEA)</p>
+                    </div>
+                    <div>
+                        <span class="block font-semibold text-gray-900 mb-1">PLM</span>
+                        <p>Windchill, Agile e6.2</p>
+                    </div>
+                    <div>
+                        <span class="block font-semibold text-gray-900 mb-1">Testing</span>
+                        <p>Fatigue Testing Setup, Data Analysis, WetLab Operations</p>
+                    </div>
+                    <div>
+                        <span class="block font-semibold text-gray-900 mb-1">Skills</span>
+                        <p>Design for Manufacturing (DFM), Biomechanics, Cross-functional Collaboration</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        
     </div>
+
 </body>
 </html>
