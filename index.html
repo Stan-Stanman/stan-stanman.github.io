@@ -62,13 +62,24 @@
                 <p class="text-gray-600 font-medium">Digital Portfolio & Resume</p>
             </div>
             
-            <!-- Contact Section Top Right -->
-            <nav class="mt-4 md:mt-0 flex flex-col md:text-right text-sm space-y-1">
-                <a href="palumbosalvatore.ws@gmail.com" class="text-blue-600 hover:text-blue-800 hover:underline">palumbosalvatore.ws@gmail.com</a>
-                <a href="spalumbo@ethz.ch" class="text-blue-600 hover:text-blue-800 hover:underline">spalumbo@ethz.ch</a>
-                <a href="tel:+41762949785" class="text-blue-600 hover:text-blue-800 hover:underline">+41 762949785</a>
-                <a href="tel:+393315092743" class="text-blue-600 hover:text-blue-800 hover:underline">+39 3315092743</a>
-                <a href="https://www.linkedin.com/in/salvatore-palumbo-01a423252" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">LinkedIn Profile</a>
+            <!-- Contact Section Top Right - Grouped for better proportions -->
+            <nav class="mt-4 md:mt-0 flex flex-col md:items-end text-sm space-y-1.5">
+                <!-- Grouped Emails -->
+                <div class="flex flex-wrap md:justify-end items-center gap-2">
+                    <a href="mailto:palumbosalvatore.ws@gmail.com" class="text-blue-600 hover:text-blue-800 hover:underline">palumbosalvatore.ws@gmail.com</a>
+                    <span class="text-gray-300 hidden sm:inline">|</span>
+                    <a href="mailto:spalumbo@ethz.ch" class="text-blue-600 hover:text-blue-800 hover:underline">spalumbo@ethz.ch</a>
+                </div>
+                
+                <!-- Grouped Phone Numbers -->
+                <div class="flex flex-wrap md:justify-end items-center gap-2">
+                    <a href="tel:+41762949785" class="text-blue-600 hover:text-blue-800 hover:underline">+41 762949785</a>
+                    <span class="text-gray-300 hidden sm:inline">|</span>
+                    <a href="tel:+393315092743" class="text-blue-600 hover:text-blue-800 hover:underline">+39 3315092743</a>
+                </div>
+                
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/salvatore-palumbo-01a423252" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline pt-0.5">LinkedIn Profile</a>
             </nav>
         </header>
 
@@ -82,8 +93,9 @@
                          onerror="this.onerror=null;this.src='https://placehold.co/250x300/E2E8F0/4A5568?text=Image+Not+Found';">
                 </div>
                 <div class="flex-1 mt-2">
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        Welcome to my digital portfolio. Thank you for stopping here!
+                    <!-- Added text-balance and a non-breaking space (&nbsp;) to prevent the dangling word -->
+                    <p class="text-lg text-gray-700 leading-relaxed text-balance">
+                        Welcome to my digital portfolio. Thank you for stopping&nbsp;here!
                     </p>
                 </div>
             </section>
