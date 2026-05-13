@@ -3,10 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Numerical implementation and investigation of dynamic cohesive fracture</title>
+    <title>Dynamic Cohesive Fracture - Salvatore Palumbo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Inter font to the body, matching the main portfolio */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* Light gray background */
+        }
+        
+        /* Main container styling */
+        .content-container {
+            max-width: 800px; 
+            margin-left: auto;
+            margin-right: auto;
+            padding: 3rem 2rem; 
+        }
+
+        /* Cleaned up list styling for the bullet points */
+        .info-list {
+            list-style-position: outside; 
+            margin-left: 1.5rem; 
+        }
+        
+        .info-list li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        /* Styling for project images */
+        .project-image {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .image-caption {
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+    </style>
 </head>
-<body>
-    <h1>Numerical implementation and investigation of dynamic cohesive fracture</h1>
-    <p>As my semester project at ETH, I have planned (06/2025 - 07/2025) with my supervisor to extend a cohesive-zone fracture model coded in Python from the quasi-staticto the dynamic setting and implement it in the finite element library FEniCSx. It will also involve benchmark tests to analyse model behaviour.</p>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="content-container">
+        
+        <!-- Navigation / Back Button -->
+        <nav class="mb-8">
+            <a href="index.html" class="text-blue-600 hover:text-blue-800 hover:underline flex items-center gap-1 text-sm font-medium transition-colors">
+                &larr; Back to Portfolio
+            </a>
+        </nav>
+
+        <!-- Page Header -->
+        <header class="border-b-2 border-gray-200 pb-6 mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2 leading-tight">Numerical Implementation and Investigation of Dynamic Cohesive Fracture</h1>
+            <h2 class="text-xl font-medium text-gray-700 mt-3">Semester Project – Computational Mechanics Group</h2>
+            <p class="text-gray-500 text-sm mt-2 font-medium tracking-wide uppercase">ETH Zürich | June 2025 – August 2025</p>
+        </header>
+
+        <main>
+            <!-- Project Context & Motivation -->
+            <section class="mb-10">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-4">Project Overview & Motivation</h3>
+                <p class="text-lg text-gray-700 leading-relaxed text-balance mb-4">
+                    The primary goal of this semester project was to extend an existing quasi-static Cohesive Zone Model (CZM) to a fully dynamic setting within the FEniCSx finite element framework. 
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed text-balance">
+                    By accounting for high-speed crack phenomena—such as dynamic branching and stress wave propagation—this model was developed to serve as a baseline numerical tool capable of validating and benchmarking novel phase-field fracture models currently under research at the ETH Computational Mechanics Group.
+                </p>
+            </section>
+
+            <!-- Theoretical Framework & Implementation -->
+            <section class="mb-10">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-4">Theoretical Framework & Implementation</h3>
+                <ul class="info-list list-disc text-gray-700 text-lg">
+                    <li><strong>Elastodynamics:</strong> Expanded the standard variational formulation to include inertial terms alongside elasticity, allowing the balance equation for linear momentum to capture transient stress waves.</li>
+                    <li><strong>Cohesive Zone Model:</strong> Implemented a model where displacements are not continuous. Elements resist separation via cohesive traction forces up to a critical opening, with a damage parameter tracking irreversible separation.</li>
+                    <li><strong>Discretization & Integration:</strong> Displacement fields were defined in a Discontinuous Galerkin (DG) space. A Newmark-beta method was utilized for time integration to ensure stability during high-speed transients, while a nested fixed-point iteration loop coupled the displacement and damage fields at each time step.</li>
+                </ul>
+            </section>
+
+            <!-- Simulation Parameters -->
+            <section class="mb-10 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Benchmark Simulation Setup</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
+                    <div>
+                        <strong class="block text-gray-900">Geometry:</strong>
+                        100mm x 40mm rectangular plate
+                    </div>
+                    <div>
+                        <strong class="block text-gray-900">Initial Flaw:</strong>
+                        50mm horizontal crack at mid-height
+                    </div>
+                    <div>
+                        <strong class="block text-gray-900">Material Properties:</strong>
+                        E = 3.2e4 MPa, v = 0.2
+                    </div>
+                    <div>
+                        <strong class="block text-gray-900">Time Parameters:</strong>
+                        80µs total time, Δt = 5.0e-8s
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Findings: Mesh Dependency -->
+            <section class="mb-10">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-4">Key Findings: The Convergence Problem</h3>
+                <p class="text-lg text-gray-700 leading-relaxed text-balance mb-4">
+                    A comprehensive study was conducted to evaluate mesh sizes ranging from 1.5mm down to 0.3mm. In standard structural analysis, finer meshes yield stabilized and highly accurate results. However, because dynamic CZM forces cracks along element interfaces, significant mesh dependency was uncovered.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed text-balance mb-4">
+                    Refining the mesh artificially increased the interface energy and induced uncontrollable multi-branching. The model failed to converge on a single stable crack pattern, and altering the mesh algorithmically while keeping parameters identical yielded entirely different fracture paths.
+                </p>
+                
+                <!-- PLACEHOLDER FOR MESH / BRANCHING IMAGE -->
+                <img src="your_mesh_convergence_image.jpg" alt="Simulation showing crack branching and mesh dependency" class="project-image" onerror="this.src='https://placehold.co/800x400/E2E8F0/4A5568?text=Insert+Mesh/Branching+Image+Here'">
+                <p class="image-caption">Figure 1: Comparison of crack branching patterns across different mesh refinement levels.</p>
+            </section>
+
+            <!-- Influence of Load Magnitude -->
+            <section class="mb-10">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-4">Influence of Load Magnitude</h3>
+                <p class="text-lg text-gray-700 leading-relaxed text-balance mb-4">
+                    Simulations compared a baseline traction of 2 MPa against a half-load (1 MPa) and double-load (4 MPa) to observe dynamic effects:
+                </p>
+                <ul class="info-list list-disc text-gray-700 text-lg mb-4">
+                    <li><strong>1 MPa:</strong> Resulted in slow crack propagation with zero branching.</li>
+                    <li><strong>2 MPa:</strong> Exhibited standard propagation with definitive primary branches.</li>
+                    <li><strong>4 MPa:</strong> Extreme crack velocity caused immense stress wave reflection. These reflected waves superimposed, creating secondary, high-stress fracture zones far removed from the primary crack tip.</li>
+                </ul>
+
+                <!-- PLACEHOLDER FOR LOAD MAGNITUDE IMAGE -->
+                <img src="your_load_magnitude_image.jpg" alt="Simulation of stress wave reflection at 4 MPa" class="project-image" onerror="this.src='https://placehold.co/800x400/E2E8F0/4A5568?text=Insert+Load+Magnitude+Image+Here'">
+                <p class="image-caption">Figure 2: Stress distribution and wave reflection visualization under 4 MPa loading conditions.</p>
+            </section>
+
+            <!-- Conclusion -->
+            <section class="mb-10">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-4">Conclusions</h3>
+                <p class="text-lg text-gray-700 leading-relaxed text-balance">
+                    While the Dynamic Cohesive Zone Model effectively captures fracture energy and tracks dynamic wave propagation, it exhibits severe mesh dependency. The study concluded that making stable, reliable predictions of specific branching paths is nearly impossible using this method without integrating advanced phase-field adaptations to regularize the fracture topologies.
+                </p>
+            </section>
+
+        </main>
+        
+    </div>
+
 </body>
 </html>
